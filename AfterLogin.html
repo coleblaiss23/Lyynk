@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background: linear-gradient(to bottom, #fdd5d5, pink); /* Pink background */
+            font-family: 'Barlow', sans-serif; /* Default font */
+            overflow: scroll; /* Hide horizontal scrollbar */
+        }
+
+        #navbar-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: black;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+            z-index: 1; /* Ensure navbar is on top */
+        }
+
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            font-size: 40px;
+            font-family: 'Pacifico', cursive;
+        }
+
+        #navbar .brand {
+            margin-right: 20px; /* Adjust margin to separate from buttons */
+        }
+
+        .navbar-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-buttons button {
+            font-family: 'Barlow', sans-serif;
+            background: white;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+            margin-left: 10px; /* Adjust spacing between buttons */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+            transition: transform 0.3s ease; /* Add transition effect */
+        }
+
+        /* Apply transform scale effect on hover */
+        .navbar-buttons button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Style for Login and Create Account buttons */
+        #navbar-container .login-button {
+            background: #ff6b6b; /* Pink background */
+            color: white;
+            margin-left: 20px; /* Adjust margin to separate from other buttons */
+            box-shadow: 0px 4px 10px rgba(255, 107, 107, 0.3); /* Add shadow */
+        }
+
+        #navbar-container .create-account-button {
+            background: #6c757d; /* Gray background */
+            color: white;
+            margin-left: 10px; /* Adjust margin to separate from other buttons */
+            box-shadow: 0px 4px 10px rgba(108, 117, 125, 0.3); /* Add shadow */
+        }
+
+        /* Apply transform scale effect on hover */
+        #navbar-container .login-button:hover,
+        #navbar-container .create-account-button:hover {
+            transform: scale(1.1);
+        }
+
+        #content {
+            padding-top: 100px; /* Adjust top padding to make space for navbar */
+            height: calc(100% - 100px); /* Set content height to fill remaining viewport */
+            text-align: left; /* Align content to the left */
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Center horizontally */
+            align-items: flex-start; /* Align items to the start (top) */
+            overflow-y: auto; /* Enable vertical scrolling */
+            padding-right: 20px; /* Add right padding */
+            padding-left: 20px; /* Add left padding */
+        }
+
+        .container {
+            width: 100%; /* Take up full available width */
+            padding: 0 20px; /* Add padding to the sides */
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #ff7f50; /* Coral color */
+            overflow: hidden;
+            margin: 0 auto 20px; /* Center horizontally and add bottom margin */
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .user-info {
+            display: flex-start;
+            margin-bottom: 20px;
+            justify-content: flex-start; /* Align items to the left */
+        }
+
+        .user-info p {
+            margin: 5px 0;
+        }
+
+        .pacifico-font {
+            font-family: 'Pacifico', cursive;
+        }
+        
+        /* Right Sidebar */
+        .chat-list {
+            background-color: #ffffff;
+            width: 250px; /* Smaller width */
+            padding: 10px; /* Reduced padding */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            height: 90%;
+            overflow-y: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chat-list h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .chat-item {
+            margin-bottom: 10px; /* Reduced margin */
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-item:hover {
+            background-color: #eaeaea;
+        }
+
+        .chat-item p {
+            margin: 5px 0;
+        }
+
+        .active-chat {
+            background-color: #ffffff;
+            width: 250px; /* Smaller width */
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            overflow-y: auto;
+            display: none;
+            transition: width 0.3s ease;
+            margin-top: 20px; /* Adjusted margin-top */
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .active-chat p.sender {
+            background-color: #007bff; /* Blue background */
+            color: white; /* Text color */
+            padding: 5px 10px; /* Adjusted padding */
+            border-radius: 10px;
+            margin-bottom: 5px; /* Adjusted margin */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow */
+            max-width: 70%; /* Adjusted width */
+            word-wrap: break-word; /* Allow long messages to wrap */
+            align-self: flex-end; /* Align to the right */
+        }
+
+        .active-chat p.receiver {
+            background-color: #28a745; /* Green background */
+            color: white; /* Text color */
+            padding: 5px 10px; /* Adjusted padding */
+            border-radius: 10px;
+            margin-bottom: 5px; /* Adjusted margin */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow */
+            max-width: 70%; /* Adjusted width */
+            word-wrap: break-word; /* Allow long messages to wrap */
+            align-self: flex-start; /* Align to the left */
+        }
+
+        /* Message input field style */
+        .message-input {
+            margin-top: 20px;
+            width: calc(100% - 60px); /* Adjusted width */
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            outline: none;
+        }
+
+        /* Send button style */
+        .send-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            background-color: #007bff; /* Blue background */
+            color: white;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+            transition: transform 0.3s ease; /* Add transition effect */
+        }
+
+        /* Apply transform scale effect on hover */
+        .send-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Collapse chat button style */
+        .collapse-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            left: 20px; /* Adjusted position */
+            top: 4px;
+            transition: transform 0.3s ease; /* Add transition effect */
+            z-index: 2; /* Ensure the button is above chat content */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+            padding: 2.5px; /* Adjusted padding */
+            border-radius: 50%; /* Make the button a perfect circle */
+        }
+
+        /* Apply transform scale effect on hover */
+        .collapse-button:hover {
+            transform: scale(1.1);
+            padding: 5px 10px; /* Adjusted padding */
+        }
+
+        /* Rotate the collapse button */
+        .collapsed .collapse-button {
+            transform: rotate(180deg);
+        }
+
+        /* Footer styles */
+        .footer {
+            background: white; /* White background */
+            padding: 20px;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer img {
+            margin-left: 10px; /* Adjust spacing between logos */
+            width: 30px; /* Adjust logo width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .footer a {
+            color: black; /* Black color for links */
+            text-decoration: none; /* Remove underline */
+            margin: 0 10px; /* Adjust margin between links */
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container">
+        <div id="navbar">
+            <div class="brand">L.</div> <!-- Adjusted position of "L." -->
+            <div class="navbar-buttons">
+                <button>My Account</button>
+                <button>Upgrade Status</button>
+                <button>Download App</button>
+                <button>Help</button>
+                <a href="Lyynk.html"><button class="login-button">Logout</button></a> <!-- Linked Logout button -->
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <!-- Profile Display -->
+        <div>
+            <div>
+                <h1>Welcome to <span class="pacifico-font">Lyynk.</span></h1>
+            </div>
+            <div class="user-info">
+                <div class="profile-image">
+                    <img src="placeholder-image.jpg" alt="Profile Image">
+                </div>
+                <label>Name:</label>
+                <p id="Name"><!-- Display username here --></p>
+                <label>Email:</label>
+                <p id="email"><!-- Display email here --></p>
+                <label>Bio:</label>
+                <p id="bio"><!-- Display bio here --></p>
+                <label>Gender:</label>
+                <p id="gender"><!-- Display genders here --></p>
+                <label>Interests:</label>
+                <p id="interests"><!-- Display interests here --></p>
+                <label>Personality Traits:</label>
+                <p id="personality"><!-- Display personality traits here --></p>
+                <label>Interested In:</label>
+                <p id="interested-in"><!-- Display interested in here --></p>
+            </div>
+        </div>
+
+        <!-- Active Chat Display (Initially hidden) -->
+        <div class="active-chat" id="active-chat">
+            <button onclick="toggleChat()" class="collapse-button">&#9664;</button> <!-- Button to toggle chat -->
+            <!-- Chat messages will be displayed here -->
+            <div id="chat-messages"></div>
+            <input type="text" id="message-input" class="message-input" placeholder="Type your message...">
+            <button onclick="sendMessage()" class="send-button">Send</button>
+        </div>
+
+        <!-- Active Chats Sidebar -->
+        <div class="chat-list">
+            <h2>Active Chats</h2>
+            <div class="chat-item" onclick="openChat('Lily Smith')">
+                <p>Lily Smith</p>
+                <p>Last message: How are you?</p>
+            </div>
+            <div class="chat-item" onclick="openChat('Emma Johnson')">
+                <p>Emma Johnson</p>
+                <p>Last message: What's up?</p>
+            </div>
+            <div class="chat-item" onclick="openChat('Olivia Brown')">
+                <p>Olivia Brown</p>
+                <p>Last message: Did you finish the project?</p>
+            </div>
+            <!-- Add more active chats dynamically -->
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- Footer with ghost and Facebook logos -->
+    <div class="footer">
+        <a href="https://www.snapchat.com/"><img src="Ghost Logo - Primary.svg" alt="Ghost Logo"></a>
+        <a href="https://www.facebook.com/"><img src="Facebook_Logo_Primary copy 2.png" alt="Facebook Logo"></a>
+        <a href="https://www.instagram.com"><img src="Instagram_Glyph_Black.png" alt="The Gram"></a>
+        <a href="https://www.linkedin.com/e"><img src="LI-In-Bug.png" alt="LinkedIn"></a>
+        <a href="https://twitter.com/"><img src="logo-black.png" alt="Twitter"></a>
+    </div>
+
+    <div class="footer">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Careers</a>
+        <a href="#">Help</a>
+        <a href="#">Contact Us</a>
+    </div>
+
+    <script>
+        // Retrieve data from localStorage and display it
+        document.getElementById("username").textContent = localStorage.getItem("username") || "N/A";
+        document.getElementById("email").textContent = localStorage.getItem("email") || "N/A";
+        document.getElementById("bio").textContent = localStorage.getItem("bio") || "N/A";
+        document.getElementById("genders").textContent = localStorage.getItem("genders") || "N/A";
+        document.getElementById("interests").textContent = localStorage.getItem("interests") || "N/A";
+        document.getElementById("personality").textContent = localStorage.getItem("personality") || "N/A";
+        document.getElementById("interested-in").textContent = localStorage.getItem("interested-in") || "N/A";
+
+        // Load and display saved chat messages
+        window.onload = function() {
+            var savedMessages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+            var chatMessagesDiv = document.getElementById("chat-messages");
+            savedMessages.forEach(function(message) {
+                chatMessagesDiv.innerHTML += message;
+            });
+        };
+
+        // Function to open chat window
+        function openChat(name) {
+            // Get the active chat element
+            var activeChat = document.getElementById("active-chat");
+            
+            // Clear previous chat messages if any
+            document.getElementById("chat-messages").innerHTML = "";
+            
+            // Show the active chat
+            activeChat.style.display = "block";
+            
+            // Example: Add some flirty sample messages to the chat
+            document.getElementById("chat-messages").innerHTML += '<p class="sender">' + name + ': Hey you must be tired because you\'ve been running through my mind all day!</p>';
+            document.getElementById("chat-messages").innerHTML += '<p class="receiver">You: Haha, that\'s a good one! But you know what? You\'re the one who keeps my heart racing!</p>';
+        }
+
+        // Function to toggle chat visibility
+        function toggleChat() {
+            var activeChat = document.getElementById("active-chat");
+            activeChat.style.display = "none";
+        }
+
+        // Function to send message
+        function sendMessage() {
+            var messageInput = document.getElementById("message-input");
+            var message = messageInput.value;
+            if (message.trim() !== "") {
+                // Add your message to the chat
+                var chatMessagesDiv = document.getElementById("chat-messages");
+                var newMessage = '<p class="sender">You: ' + message + '</p>';
+                chatMessagesDiv.innerHTML += newMessage;
+                
+                // Save message to localStorage
+                var savedMessages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+                savedMessages.push(newMessage);
+                localStorage.setItem("chatMessages", JSON.stringify(savedMessages));
+                
+                messageInput.value = ""; // Clear input field after sending message
+
+                // Update the last message in the chat list
+                var chatList = document.querySelectorAll('.chat-list .chat-item');
+                if (chatList.length > 0) {
+                    // Assuming the first chat item is the active one
+                    chatList[0].querySelectorAll('p')[1].textContent = "Last message: " + message;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+

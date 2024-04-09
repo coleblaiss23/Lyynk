@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background: linear-gradient(to bottom, #fdd5d5, pink); /* Pink background */
+            font-family: 'Barlow', sans-serif; /* Default font */
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        #navbar-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: black;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+            z-index: 1; /* Ensure navbar is on top */
+        }
+
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            font-size: 40px;
+            font-family: 'Pacifico', cursive;
+        }
+
+        #navbar .brand {
+            margin-right: 20px; /* Adjust margin to separate from buttons */
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Inherit color */
+        }
+
+        .navbar-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-buttons button {
+            font-family: 'Barlow', sans-serif;
+            background: white;
+            color: black;
+            padding: 15px 25px; /* Increased padding */
+            border: none;
+            cursor: pointer;
+            border-radius: 30px; /* Increased border radius */
+            margin-left: 10px; /* Adjust spacing between buttons */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+            transition: transform 0.3s ease; /* Add transition effect */
+        }
+
+        /* Apply transform scale effect on hover */
+        .navbar-buttons button:hover {
+            transform: scale(1.1);
+        }
+
+        .get-help-button {
+            background: #ff6b6b; /* Pink background */
+            color: white;
+            padding: 15px 30px; /* Increased padding */
+            border-radius: 50px; /* Increased border radius */
+            box-shadow: 0px 4px 10px rgba(255, 107, 107, 0.3); /* Add shadow */
+            transition: transform 0.3s ease; /* Add transition effect */
+            cursor: pointer;
+        }
+
+        /* Apply transform scale effect on hover */
+        .get-help-button:hover {
+            transform: scale(1.1);
+        }
+
+        .container {
+            padding-top: 150px; /* Adjust top padding to make space for navbar */
+            height: calc(100% - 150px); /* Set content height to fill remaining viewport */
+            display: flex; /* Use flexbox for layout */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            flex-direction: column; /* Align items in column */
+        }
+
+        .title {
+            font-family: 'Pacifico', cursive;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            width: 300px;
+            padding: 15px; /* Increased padding */
+            border-radius: 50px; /* Increased border radius */
+            border: 2px solid #ff6b6b; /* Changed border color */
+            margin-bottom: 20px;
+            outline: none; /* Remove outline */
+            transition: border-color 0.3s ease; /* Add transition effect for border color */
+        }
+
+        /* Change border color on focus */
+        .input-box:focus {
+            border-color: #ff9b9b;
+        }
+
+        .footer {
+            background: white; /* White background */
+            padding: 20px;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer img {
+            margin-left: 10px; /* Adjust spacing between logos */
+            width: 30px; /* Adjust logo width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .footer a {
+            color: black; /* Black color for links */
+            text-decoration: none; /* Remove underline */
+            margin: 0 10px; /* Adjust margin between links */
+        }
+        
+        .footer a.brand {
+            color: white; /* Set color to white for brand link */
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container">
+        <div id="navbar">
+            <a href="Lyynk.html" class="brand">L.</a> <!-- Adjusted position of "L." -->
+            <div class="navbar-buttons">
+                <button onclick="window.location.href='Login.html'">My Account</button>
+                <button>Upgrade Status</button>
+                <button>Download App</button>
+                <button onclick="window.location.href='GetHelp.html'" class="get-help-button">Help</button> <!-- Modified Get Help button -->
+                <a href="Login.html"><button class="login-button" style="background: #ff6b6b;">Login</button></a> <!-- Linked Login button -->
+                <a href="CreateAccount.html"><button class="create-account-button" style="background: #6c757d;">Create Account</button></a> <!-- Linked Create Account button -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="title">Need Help?</div>
+        <input type="text" class="input-box" placeholder="Type your question here...">
+        <div class="get-help-button" onclick="window.location.href='GetHelp.html'">Get Help</div> <!-- Changed button text -->
+    </div>
+
+    <!-- Footer with ghost and Facebook logos -->
+    <div class="footer">
+        <a href="https://www.snapchat.com/"><img src="Ghost Logo - Primary.svg" alt="Ghost Logo"></a>
+        <a href="https://www.facebook.com/"><img src="Facebook_Logo_Primary copy 2.png" alt="Facebook Logo"></a>
+        <a href="https://www.instagram.com"><img src="Instagram_Glyph_Black.png" alt="The Gram"></a>
+        <a href="https://www.linkedin.com/e"><img src="LI-In-Bug.png" alt="LinkedIn"></a>
+        <a href="https://twitter.com/"><img src="logo-black.png" alt="Twitter"></a>
+    </div>
+
+    <div class="footer">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Careers</a>
+        <a href="#">Help</a>
+        <a href="#">Contact Us</a>
+    </div>
+</body>
+</html>

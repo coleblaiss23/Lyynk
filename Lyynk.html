@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background: linear-gradient(to bottom, #fdd5d5, pink); /* Pink background */
+            font-family: 'Barlow', sans-serif; /* Default font */
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+        
+
+        #navbar-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: black;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+            z-index: 1; /* Ensure navbar is on top */
+        }
+
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            font-size: 40px;
+            font-family: 'Pacifico', cursive;
+        }
+
+        #navbar .brand {
+            margin-right: 20px; /* Adjust margin to separate from buttons */
+        }
+
+        .navbar-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-buttons button {
+            font-family: 'Barlow', sans-serif;
+            background: white;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+            margin-left: 10px; /* Adjust spacing between buttons */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+            transition: transform 0.3s ease; /* Add transition effect */
+        }
+
+        /* Apply transform scale effect on hover */
+        .navbar-buttons button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Style for Login and Create Account buttons */
+        #navbar-container .login-button {
+            background: #ff6b6b; /* Pink background */
+            color: white;
+            margin-left: 20px; /* Adjust margin to separate from other buttons */
+            box-shadow: 0px 4px 10px rgba(255, 107, 107, 0.3); /* Add shadow */
+        }
+
+        #navbar-container .create-account-button {
+            background: #6c757d; /* Gray background */
+            color: white;
+            margin-left: 10px; /* Adjust margin to separate from other buttons */
+            box-shadow: 0px 4px 10px rgba(108, 117, 125, 0.3); /* Add shadow */
+        }
+
+        /* Apply transform scale effect on hover */
+        #navbar-container .login-button:hover,
+        #navbar-container .create-account-button:hover {
+            transform: scale(1.1);
+        }
+
+        #content {
+            padding-top: 150px; /* Adjust top padding to make space for navbar */
+            height: calc(100% - 150px); /* Set content height to fill remaining viewport */
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Align items to the left */
+            align-items: center; /* Center vertically */
+            padding: 20px; /* Add padding to the sides */
+            position: relative; /* Set position to relative */
+        }
+
+        #video-container {
+            flex: 1; /* Take up remaining space */
+            padding: 0 20px; /* Add padding to the sides */
+            margin-top: 220px; /* Move video even lower */
+            width: 40%; /* Adjust video container width */
+        }
+
+        #video-container video {
+            width: 40%; /* Adjust video width to fill container */
+            height: auto; /* Ensure aspect ratio is maintained */
+            border-radius: 20px; /* Add border radius */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+        }
+
+        #text-container {
+            flex: 1; /* Take up remaining space */
+            padding: 0 20px; /* Add padding to the sides */
+            text-align: center; /* Center text */
+        }
+        
+
+        .pacifico-font {
+            font-family: 'Pacifico', cursive;
+        }
+
+        #app-download {
+            font-size: 24px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+        
+       .footer {
+            background: white; /* White background */
+            padding: 20px;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .footer {
+            background: white; /* White background */
+            padding: 20px;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer img {
+            margin-left: 10px; /* Adjust spacing between logos */
+            width: 30px; /* Adjust logo width */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .footer a {
+            color: black; /* Black color for links */
+            text-decoration: none; /* Remove underline */
+            margin: 0 10px; /* Adjust margin between links */
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container">
+        <div id="navbar">
+            <div class="brand">L.</div> <!-- Adjusted position of "L." -->
+            <div class="navbar-buttons">
+                <button onclick="window.location.href='Login.html'">My Account</button>
+                <button>Upgrade Status</button>
+                <button>Download App</button>
+                <button onclick="window.location.href='Help.html'">Help</button> <!-- Modified onclick event -->
+                <a href="Login.html"><button class="login-button">Login</button></a> <!-- Linked Login button -->
+                <a href="CreateAccount.html"><button class="create-account-button">Create Account</button></a> <!-- Linked Create Account button -->
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <!-- Your site content goes here -->
+        <!-- For demonstration purposes, I'll add some sample text -->
+        <div id="text-container">
+            <h1><span>Start</span> <span class="pacifico-font">Lyynking!</span></h1>
+            <p id="app-download">Download the app today!</p>
+        </div>
+        <div id="video-container">
+            <video autoplay loop muted>
+                <source src="RPReplay_Final1712020203.mov" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!-- Footer with ghost and Facebook logos -->
+    <div class="footer">
+        <a href="https://www.snapchat.com/"><img src="./Images/Ghost Logo - Primary.svg" alt="Ghost Logo"></a>
+        <a href="https://www.facebook.com/"><img src="./Images/Facebook_Logo_Primary copy 2.png" alt="Facebook Logo"></a>
+        <a href="https://www.instagram.com"><img src="./Images/Instagram_Glyph_Black.png" alt="The Gram"></a>
+        <a href="https://www.linkedin.com/e"><img src="./Images/LI-In-Bug.png" alt="LinkedIn"></a>
+        <a href="https://twitter.com/"><img src="./Images/logo-black.png" alt="Twitter"></a>
+    </div>
+
+    <div class="footer">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Careers</a>
+        <a href="#">Help</a>
+        <a href="#">Contact Us</a>
+    </div>
+</body>
+</html>

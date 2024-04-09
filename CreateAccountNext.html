@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account Next</title>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Barlow', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #000000 0%, #343434 100%);
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            margin-bottom: 30px;
+            color: black;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            width: calc(100% - 16px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: none;
+            background-color: #f8f9fa; /* Light gray background */
+            border-radius: 8px;
+            box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add inset shadow */
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        textarea:focus {
+            outline: none;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2); /* Add box shadow on focus */
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: #ff7f50; /* Coral color */
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        input[type="submit"]:hover {
+            background-color: #ff6347; /* Darker coral color on hover */
+        }
+        .text-center {
+            text-align: center;
+        }
+        .checkbox-group {
+            margin-bottom: 15px;
+        }
+        .checkbox-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        /* Styling for circular profile image input */
+        #profile-image-input {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px dashed #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+        #profile-image-input img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        /* Additional styling for labels */
+        .pop-out-label {
+            font-size: 1.2em;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background-color: #ff7f50; /* Coral color */
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><a href="Lyynk.html" style="color: black; text-decoration: none;">L.</a></h1>
+        <form id="create-profile-form" action="process_create_profile.php" method="POST">
+            <div class="form-group">
+                <label for="profile-image">Profile Image:</label>
+                <!-- Circular profile image input -->
+                <label id="profile-image-input" for="profile-image">
+                    <img src="placeholder-image.jpg" alt="Profile Image">
+                </label>
+                <input type="file" id="profile-image" name="profile-image" accept="image/*" style="display: none;">
+            </div>
+            <div class="form-group">
+                <label for="bio">Bio:</label>
+                <textarea id="bio" name="bio" rows="4"></textarea>
+            </div>
+            <div class="checkbox-group">
+                <label class="pop-out-label">Genders:</label>
+                <label><input type="checkbox" name="gender" value="male"> Male</label>
+                <label><input type="checkbox" name="gender" value="female"> Female</label>
+                <label><input type="checkbox" name="gender" value="other"> Other</label>
+            </div>
+            <div class="form-group">
+                <label for="interests" class="pop-out-label">Interests:</label>
+                <input type="text" id="interests" name="interests">
+            </div>
+            <div class="checkbox-group">
+                <label class="pop-out-label">Personality Traits:</label>
+                <label><input type="checkbox" name="personality" value="adventurous"> Adventurous</label>
+                <label><input type="checkbox" name="personality" value="creative"> Creative</label>
+                <label><input type="checkbox" name="personality" value="outgoing"> Outgoing</label>
+                <!-- Additional Personality Traits -->
+                <label><input type="checkbox" name="personality" value="optimistic"> Optimistic</label>
+                <label><input type="checkbox" name="personality" value="reliable"> Reliable</label>
+                <label><input type="checkbox" name="personality" value="curious"> Curious</label>
+                <label><input type="checkbox" name="personality" value="calm"> Calm</label>
+                <label><input type="checkbox" name="personality" value="organized"> Organized</label>
+                <label><input type="checkbox" name="personality" value="sociable"> Sociable</label>
+                <label><input type="checkbox" name="personality" value="adaptable"> Adaptable</label>
+                <label><input type="checkbox" name="personality" value="enthusiastic"> Enthusiastic</label>
+                <label><input type="checkbox" name="personality" value="patient"> Patient</label>
+                <label><input type="checkbox" name="personality" value="confident"> Confident</label>
+                <label><input type="checkbox" name="personality" value="loyal"> Loyal</label>
+                <label><input type="checkbox" name="personality" value="resilient"> Resilient</label>
+            </div>
+            <div class="checkbox-group">
+                <label class="pop-out-label">Interested In:</label>
+                <label><input type="checkbox" name="interested-in" value="male"> Men</label>
+                <label><input type="checkbox" name="interested-in" value="female"> Women</label>
+                <label><input type="checkbox" name="interested-in" value="both"> Both</label>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="saveProfile" value="Save Profile">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Add event listener to the "Save Profile" button
+            document.getElementById("saveProfile").addEventListener("click", function(event) {
+                // Prevent the default form submission
+                event.preventDefault();
+                
+                // Redirect to MyAccount.html
+                window.location.href = "MyAccount.html";
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Barlow&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background: linear-gradient(to bottom, #fdd5d5, pink); /* Pink background */
+            font-family: 'Barlow', sans-serif; /* Default font */
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        #navbar-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: black;
+            color: white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+            z-index: 1; /* Ensure navbar is on top */
+        }
+
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            font-size: 40px;
+            font-family: 'Pacifico', cursive;
+        }
+
+        #navbar .brand {
+            margin-right: 20px; /* Adjust margin to separate from buttons */
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Inherit color */
+        }
+
+        .navbar-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-buttons button {
+            font-family: 'Barlow', sans-serif;
+            background: white;
+            color: black;
+            padding: 15px 25px; /* Increased padding */
+            border: none;
+            cursor: pointer;
+            border-radius: 30px; /* Increased border radius */
+            margin-left: 10px; /* Adjust spacing between buttons */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+            transition: transform 0.3s ease; /* Add transition effect */
+        }
+
+        /* Apply transform scale effect on hover */
+        .navbar-buttons button:hover {
+            transform: scale(1.1);
+        }
+
+        .container {
+            padding-top: 150px; /* Adjust top padding to make space for navbar */
+            height: calc(100% - 150px); /* Set content height to fill remaining viewport */
+            display: flex; /* Use flexbox for layout */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            flex-direction: column; /* Align items in column */
+        }
+
+        .title {
+            font-family: 'Pacifico', cursive;
+            font-size: 40px;
+            margin-bottom: 20px;
+            text-align: center; /* Center the title */
+        }
+
+        .troubleshooting {
+            width: 80%; /* Set width for troubleshooting tips */
+            max-width: 600px; /* Limit maximum width */
+        }
+
+        .troubleshooting p {
+            margin: 10px 0; /* Adjust margin */
+            padding: 15px; /* Add padding */
+            background-color: #fff; /* White background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+            transition: transform 0.3s ease; /* Add transition effect */
+        }
+
+        .troubleshooting p:hover {
+            transform: translateY(-5px); /* Move the tip up on hover */
+        }
+
+        .troubleshooting p strong {
+            color: #ff6b6b; /* Change color of strong text */
+        }
+
+        .footer {
+            background: white; /* White background */
+            padding: 20px;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer img {
+            margin-left: 10px; /* Adjust spacing between logos */
+            width: 30px; /* Adjust logo width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .footer a {
+            color: black; /* Black color for links */
+            text-decoration: none; /* Remove underline */
+            margin: 0 10px; /* Adjust margin between links */
+        }
+        
+        .footer a.brand {
+            color: white; /* Set color to white for brand link */
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container">
+        <div id="navbar">
+            <a href="Lyynk.html" class="brand">L.</a> <!-- Adjusted position of "L." -->
+            <div class="navbar-buttons">
+                <button onclick="window.location.href='Login.html'">My Account</button>
+                <button>Upgrade Status</button>
+                <button>Download App</button>
+                <button>Help</button> <!-- Modified Get Help button -->
+                <a href="Login.html"><button class="login-button" style="background: #ff6b6b;">Login</button></a> <!-- Linked Login button -->
+                <a href="CreateAccount.html"><button class="create-account-button" style="background: #6c757d;">Create Account</button></a> <!-- Linked Create Account button -->
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+   
+   
+
+    <div class="container">
+        <div class="title">Troubleshooting Topics</div>
+        <div class="troubleshooting">
+            <p><strong>1. Connectivity Issues:</strong> Make sure your device is connected to the internet.</p>
+            <p><strong>2. App Crashing:</strong> Try restarting the app or reinstalling it.</p>
+            <p><strong>3. Forgotten Password:</strong> Use the "Forgot Password" feature to reset your password.</p>
+            <p><strong>4. Payment Problems:</strong> Check your payment method and account balance.</p>
+            <p><strong>5. Slow Performance:</strong> Close unused apps and clear cache.</p>
+            <p><strong>6. Compatibility:</strong> Ensure your device meets the app's requirements.</p>
+            <p><strong>7. Error Messages:</strong> Note down any error messages and search for solutions online.</p>
+            <p><strong>8. Account Access:</strong> Contact support if you're unable to access your account.</p>
+            <p><strong>9. Missing Features:</strong> Check for app updates or contact support for assistance.</p>
+            <p><strong>10. Security Concerns:</strong> Enable two-factor authentication for added security.</p>
+            <p><strong>11. Data Loss:</strong> Backup your data regularly to prevent loss.</p>
+            <p><strong>12. Account Deletion:</strong> Follow the instructions in the app to delete your account.</p>
+            <p><strong>13. Location Services:</strong> Enable location services if required by the app.</p>
+            <p><strong>14. Display Issues:</strong> Adjust screen brightness and resolution settings.</p>
+            <p><strong>15. Sync Problems:</strong> Check sync settings and ensure proper syncing with cloud services.</p>
+        </div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+    <!-- Footer with ghost and Facebook logos -->
+    <div class="footer">
+        <a href="https://www.snapchat.com/"><img src="Ghost Logo - Primary.svg" alt="Ghost Logo"></a>
+        <a href="https://www.facebook.com/"><img src="Facebook_Logo_Primary copy 2.png" alt="Facebook Logo"></a>
+        <a href="https://www.instagram.com"><img src="Instagram_Glyph_Black.png" alt="The Gram"></a>
+        <a href="https://www.linkedin.com/e"><img src="LI-In-Bug.png" alt="LinkedIn"></a>
+        <a href="https://twitter.com/"><img src="logo-black.png" alt="Twitter"></a>
+    </div>
+
+    <div class="footer">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Careers</a>
+        <a href="#">Help</a>
+        <a href="#">Contact Us</a>
+    </div>
+</body>
+</html>
+
